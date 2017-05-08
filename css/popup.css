@@ -1,0 +1,16 @@
+#pop{
+	text-align:center;
+}
+
+#logo{
+	width:30px;
+	height:30px;
+}
+
+#title, #logo{
+	display:inline-block;
+}
+
+.mode{
+	cursor: pointer;
+}
