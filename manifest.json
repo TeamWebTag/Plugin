@@ -13,5 +13,9 @@
   },
   "icons" : {
     "128" : "img/Angry.png"
-  }
+  },
+  "content_scripts" : [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["./js/tag_the_web.js"]
+  }]
 }
