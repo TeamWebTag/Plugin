@@ -1,11 +1,16 @@
-var w = 0;
-var h = 0;
+var	w = window.innerWidth;
+var	h = window.innerHeight;
+var wild = false;
 var CheminComplet = document.location.href;
-
-function getWindowSize(){
-	w = window.innerWidth;
-	h = window.innerHeight;
+/*
+function deactivate_sm(){
+	wild = true;
 }
 
-getWindowSize();
+if (!wild)
+{
+
+}*/
+//document.addEventListener();;
+
 alert('url page ' + CheminComplet + ' w = ' + w + ' h = ' + h);
