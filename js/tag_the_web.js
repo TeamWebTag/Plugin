@@ -13,4 +13,4 @@ if (!wild)
 }*/
 //document.addEventListener();;
 
-alert('url page ' + CheminComplet + ' w = ' + w + ' h = ' + h);
+//alert('url page ' + CheminComplet + ' w = ' + w + ' h = ' + h);

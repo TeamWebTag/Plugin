@@ -7,14 +7,19 @@
 </head>
 <body>
   <div id='pop'>
-    <img id='logo' src='./img/Angry.png'>
+    <img id='logo' src='./img/logo.png'>
     <p id='title'>WEBTAG</p>
   </div>
   <form>
-  	<input type='radio' class='mode' name='mode' value="Desactiver" >Désactiver<br/>
-	  <input type='radio' class='mode' name='mode' value="Mild">Mild - Mode<br/>
-	  <input type='radio' id='wild' class='mode' name='mode' value="Wild" checked onclick="deactivate_sm()">Wild - Mode<br/>
+    <script type="text/javascript" src="./js/button.js"></script>
+  	<input type='radio' class='mode' name='mode' value="Activer" >Activer<br/>
+	  <input type='radio' class='mode' name='mode' value="Desactiver">Désactiver<br/>
+	  <!--input type='radio' id='wild' class='mode' name='mode' value="Wild" checked onclick="deactivate_sm()">Wild - Mode<br/-->
 	</form>
+  <div>
+    <input type='radio' class='mode' name='mode' value="ON" >ON - Outils<br/>
+    <input type='radio' class='mode' name='mode' value="OFF" >OFF - Outils<br/>
+  </div>
   <!-- <button class='mode'></button> -->
 </body>
 </html>
