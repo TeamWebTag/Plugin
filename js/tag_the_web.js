@@ -3,12 +3,11 @@ var	h = window.innerHeight;
 var wild = false;
 var CheminComplet = document.location.href;
 
-var canvas = document.createElement('canvas');
-canvas.id = 'drawing_canvas';
-canvas.style.width = w;
-canvas.style.height = h;
-document.appendChild(canvas);
-
+var dcanvas = document.createElement("canvas");
+dcanvas.id = 'drawing_canvas';
+dcanvas.style.width = w + 'px';
+dcanvas.style.height = h + 'px';
+document.body.appendChild(dcanvas);
 /*
 function deactivate_sm(){
 	wild = true;
