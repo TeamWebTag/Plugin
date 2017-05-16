@@ -1,14 +1,27 @@
-var wild = document.getElementById("wild");
-var hello = 0;
+var activ = document.getElementById('activer');
+var desac = document.getElementById('desactiver');
+var on = document.getElementById("On");
+var off = document.getElementById("Off");
+var tools = document.getElementById("outils");
 
-var deactivate_sm = function() {
-	if (wild.checked == true)
-	{
-		hello = 1;
-		alert(hello);
-	}
+desac.onclick = function(){
+	desac.disabled = true;
+	activ.disabled = false;
+	tools.style.display = 'none';
 }
 
-function lol(){
-	alert('je suis la');
+activ.onclick = function(){
+	activ.disabled = true;
+	desac.disabled = false;
+	tools.style.display = '';
+}
+
+on.onclick = function(){
+	on.disabled = true;
+	off.disabled = false;
+}
+
+off.onclick = function(){
+	off.disabled = true;
+	on.disabled = false;
 }

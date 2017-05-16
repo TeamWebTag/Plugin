@@ -3,23 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/popup.css">
-<script type="text/javascript" src="./js/popup.js"></script>
 </head>
 <body>
   <div id='pop'>
     <img id='logo' src='./img/logo.png'>
     <p id='title'>WEBTAG</p>
   </div>
-  <form>
-    <script type="text/javascript" src="./js/button.js"></script>
-  	<input type='radio' class='mode' name='mode' value="Activer" >Activer<br/>
-	  <input type='radio' class='mode' name='mode' value="Desactiver">Désactiver<br/>
-	  <!--input type='radio' id='wild' class='mode' name='mode' value="Wild" checked onclick="deactivate_sm()">Wild - Mode<br/-->
-	</form>
-  <div>
-    <input type='radio' class='mode' name='mode' value="ON" >ON - Outils<br/>
-    <input type='radio' class='mode' name='mode' value="OFF" >OFF - Outils<br/>
+  	<button class='mode' id='activer' disabled>Activer</button>
+	  <button class='mode' id='desactiver'>Désactiver<br/></button>
+  <div id='outils'>
+    <p>Outils</p>
+    <button class='mode' id="On">ON</button>
+    <button class='mode' id="Off" disabled>OFF</button>
   </div>
   <!-- <button class='mode'></button> -->
+  <script type="text/javascript" src="./js/popup.js"></script>
 </body>
 </html>
