@@ -4,24 +4,54 @@ var on = document.getElementById("On");
 var off = document.getElementById("Off");
 var tools = document.getElementById("outils");
 
+document.onload = function(){
+	if (!localStorage.activ)
+	{
+		localStorage.activ = true;
+		localStorage.desactiv = false;
+		localStorage.on = false;
+		localStorage.off = true;
+		StatusChange();
+	}
+}
+
+function StatusChange(){
+	desac.disabled = localStorage.desactiv;
+	activ.disabled = localStorage.activ;
+	on.disabled = localStorage.on;
+	off.disabled = localStorage.off;
+}
+
 desac.onclick = function(){
-	desac.disabled = true;
-	activ.disabled = false;
+	localStorage.desactiv = true;
+	localStorage.activ = false;
+	StatusChange();
 	tools.style.display = 'none';
+	chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"});
 }
 
 activ.onclick = function(){
-	activ.disabled = true;
-	desac.disabled = false;
+	localStorage.activ = true;
+	localStorage.desactiv = false;
+	StatusChange();
 	tools.style.display = '';
 }
 
 on.onclick = function(){
-	on.disabled = true;
-	off.disabled = false;
+	localStorage.on = true;
+	localStorage.off = false;
+	StatusChange();
 }
 
 off.onclick = function(){
-	off.disabled = true;
-	on.disabled = false;
+	localStorage.on = false;
+	localStorage.off = true;
+	StatusChange();
 }
+
+// if (desac.disabled === false){
+// 	chrome.tabs.sendMessage(tabs[0].id), {todo : "activateExt"};
+// }
+// else{
+// 	chrome.tabs.sendMessage(tabs[0].id), {todo : "desactivateExt"};
+// }
