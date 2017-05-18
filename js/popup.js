@@ -1,53 +1,66 @@
-var activ = document.getElementById('activer');
-var desac = document.getElementById('desactiver');
-var on = document.getElementById("On");
-var off = document.getElementById("Off");
-var tools = document.getElementById("outils");
-
-document.onload = function(){
-	if (!localStorage.activ)
-	{
-		localStorage.activ = true;
-		localStorage.desactiv = false;
-		localStorage.on = false;
-		localStorage.off = true;
-		StatusChange();
-	}
+function onLoad(){
+    chrome.storage.sync.get({
+        'Activ' : true,
+        'Desac' : false,
+        'ToolsOn' : false,
+        'ToolsOFF' : true,
+        'ToolsExist' : ''
+    }, function(items){
+            document.getElementById('activer').disabled = items.Activ;
+            document.getElementById('desactiver').disabled = items.Desac;
+            document.getElementById("On").disabled = items.ToolsOn;
+            document.getElementById("Off").disabled = items.ToolsOFF;
+            document.getElementById("outils").style.display = items.ToolsExist;
+        });
 }
 
-function StatusChange(){
-	desac.disabled = localStorage.desactiv;
-	activ.disabled = localStorage.activ;
-	on.disabled = localStorage.on;
-	off.disabled = localStorage.off;
-}
+function DesAct(){
+      chrome.storage.sync.set({
+        'Activ' : false,
+        'Desac' : true,
+        'ToolsOn' : false,
+        'ToolsOFF' : true,
+        'ToolsExist' : 'none'
+    }, function(items){onLoad();});
+    // chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"});
+};
 
-desac.onclick = function(){
-	localStorage.desactiv = true;
-	localStorage.activ = false;
-	StatusChange();
-	tools.style.display = 'none';
-	chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"});
-}
+function Act(){
+      chrome.storage.sync.set({
+        'Activ' : true,
+        'Desac' : false,
+        'ToolsOn' : false,
+        'ToolsOFF' : true,
+        'ToolsExist' : ''
+    }, function(items){onLoad();});
+    // chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"});
+};
 
-activ.onclick = function(){
-	localStorage.activ = true;
-	localStorage.desactiv = false;
-	StatusChange();
-	tools.style.display = '';
-}
+function ToolsOn(){
+      chrome.storage.sync.set({
+        'ToolsOn' : true,
+        'ToolsOFF' : false,
+        'ToolsExist' : ''
+    }, function(items){onLoad();});
+    // chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"});
+};
 
-on.onclick = function(){
-	localStorage.on = true;
-	localStorage.off = false;
-	StatusChange();
-}
+function ToolsOff(){
+      chrome.storage.sync.set({
+        'ToolsOn' : false,
+        'ToolsOFF' : true,
+        'ToolsExist' : ''
+    }, function(items){onLoad();});
+    // chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"});
+};
 
-off.onclick = function(){
-	localStorage.on = false;
-	localStorage.off = true;
-	StatusChange();
-}
+document.addEventListener("DOMContentLoaded", function(){
+    onLoad();
+    document.getElementById('desactiver').addEventListener('click', DesAct);
+    document.getElementById('activer').addEventListener('click', Act);
+    document.getElementById('On').addEventListener('click', ToolsOn);
+    document.getElementById('Off').addEventListener('click', ToolsOff);
+});
 
 // if (desac.disabled === false){
 // 	chrome.tabs.sendMessage(tabs[0].id), {todo : "activateExt"};
