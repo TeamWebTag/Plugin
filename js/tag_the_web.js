@@ -3,7 +3,7 @@ var	h = window.innerHeight;
 var wild = false;
 var CheminComplet = document.location.href;
 
-chrome.runtime.onMessage.addListener(function (request, sender){
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 	if (request.todo == "activateExt"){
 		var dcanvas = document.createElement("canvas");
 		dcanvas.id = 'drawing_canvas';
@@ -14,10 +14,10 @@ chrome.runtime.onMessage.addListener(function (request, sender){
 		var oldcanvas = document.getElementById('drawing_canvas');
 		if (oldcanvas !== undefined)
 		{
-			document.body.removechild(oldcanvas);
+			document.body.removeChild(oldcanvas);
 			window.location.reload();
 		}
-	} 
+	}
 });
 
 

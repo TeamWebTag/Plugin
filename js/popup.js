@@ -11,10 +11,18 @@ function onLoad(){
             document.getElementById("On").disabled = items.ToolsOn;
             document.getElementById("Off").disabled = items.ToolsOFF;
             document.getElementById("outils").style.display = items.ToolsExist;
-            if (items.Desac === true)
-                chrome.tabs.sendMessage(tabs[0].id, {todo : "desactivateExt"}, function(){});
-            else
-                chrome.tabs.sendMessage(tabs[0].id, {todo : "activateExt"}, function(){});   
+            if (items.Desac === true){
+				chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+					var activeTab = tabs[0];
+					chrome.tabs.sendMessage(activeTab.id, {"todo" : "desactivateExt"});
+				});
+			}
+			else{
+				chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+					var activeTab = tabs[0];
+					chrome.tabs.sendMessage(tabs[0].id, {"todo" : "activateExt"});
+				});
+			}
     });
 }
 
