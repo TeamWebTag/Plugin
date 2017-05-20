@@ -26,16 +26,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 	}
 });
 
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
+	if (request.todo == "actTools"){
+		var tools = document.createElement("div");
+		tools.style.opacity = '1';
+		var pen = tools.createElement("div");
+	}
+	else if (request.todo == "desTools"){
+		dcanvas.style.pointerEvents = 'none';
+	}
+});
 
-/*
-function deactivate_sm(){
-	wild = true;
-}
-
-if (!wild)
-{
-
-}*/
-//document.addEventListener();;
-
-//alert('url page ' + CheminComplet + ' w = ' + w + ' h = ' + h);
