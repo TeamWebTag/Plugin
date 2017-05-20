@@ -25,12 +25,15 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		}
 	}
 	if (request.todo == "actTools"){
+		var canTool = document.getElementById('drawing_canvas');
+		canTool.style.pointerEvents = 'auto';
 		var tools = document.createElement("div");
 		tools.style.opacity = '1';
-		var pen = tools.createElement("div");
+		// var pen = tools.createElement("div");
 	}
 	else if (request.todo == "desTools"){
-		dcanvas.style.pointerEvents = 'none';
+		var canTool = document.getElementById('drawing_canvas');
+		canTool.style.pointerEvents = 'none';
 	}
 });
 

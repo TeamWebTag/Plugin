@@ -53,7 +53,8 @@ function ToolsOn(){
 		'ToolsExist' : ''
 	}, function(items){
 		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-			chrome.tabs.sendMessage(tabs[0].id, {"todo" : "desTools"});
+			var activeTab = tabs[0];
+			chrome.tabs.sendMessage(activeTab.id, {"todo" : "actTools"});
 		});
 		onLoad();
 });
@@ -66,7 +67,8 @@ function ToolsOff(){
 		'ToolsExist' : ''
 	}, function(items){
 		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-			chrome.tabs.sendMessage(tabs[0].id, {"todo" : "actTools"});
+		var activeTab = tabs[0];
+		chrome.tabs.sendMessage(activeTab.id, {"todo" : "desTools"});
 		});
 		onLoad();
 	});
@@ -80,9 +82,3 @@ document.addEventListener("DOMContentLoaded", function(){
 	document.getElementById('Off').addEventListener('click', ToolsOff);
 });
 
-// if (desac.disabled === false){
-// 	chrome.tabs.sendMessage(tabs[0].id), {todo : "activateExt"};
-// }
-// else{
-// 	chrome.tabs.sendMessage(tabs[0].id), {todo : "desactivateExt"};
-// }
