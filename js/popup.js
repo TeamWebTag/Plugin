@@ -11,28 +11,6 @@ function onLoad(){
 	document.getElementById("On").disabled = items.ToolsOn;
 	document.getElementById("Off").disabled = items.ToolsOFF;
 	document.getElementById("outils").style.display = items.ToolsExist;
-	if (items.Desac === true){
-		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-			var activeTab = tabs[0];
-			chrome.tabs.sendMessage(activeTab.id, {"todo" : "desactivateExt"});
-		});
-	}
-	else{
-		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-			var activeTab = tabs[0];
-			chrome.tabs.sendMessage(tabs[0].id, {"todo" : "activateExt"});
-		});
-	}
-	if (items.ToolsOFF === true){
-		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-		chrome.tabs.sendMessage(tabs[0].id, {"todo" : "desTools"});
-		});
-	}
-	else{
-		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
-		chrome.tabs.sendMessage(tabs[0].id, {"todo" : "actTools"});
-		});
-}
 });
 }
 
@@ -43,7 +21,13 @@ function DesAct(){
 		'ToolsOn' : false,
 		'ToolsOFF' : true,
 		'ToolsExist' : 'none'
-	}, function(items){onLoad();});
+	}, function(items){
+		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+		var activeTab = tabs[0];
+		chrome.tabs.sendMessage(activeTab.id, {"todo" : "desactivateExt"});
+		});
+		onLoad();
+	});
 };
 
 function Act(){
@@ -53,7 +37,13 @@ function Act(){
 		'ToolsOn' : false,
 		'ToolsOFF' : true,
 		'ToolsExist' : ''
-	}, function(items){onLoad();});
+	}, function(items){
+		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+			var activeTab = tabs[0];
+			chrome.tabs.sendMessage(activeTab.id, {"todo" : "activateExt"});
+		});
+		onLoad();
+	});
 };
 
 function ToolsOn(){
@@ -61,7 +51,12 @@ function ToolsOn(){
 		'ToolsOn' : true,
 		'ToolsOFF' : false,
 		'ToolsExist' : ''
-	}, function(items){onLoad();});
+	}, function(items){
+		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+			chrome.tabs.sendMessage(tabs[0].id, {"todo" : "desTools"});
+		});
+		onLoad();
+});
 };
 
 function ToolsOff(){
@@ -69,7 +64,12 @@ function ToolsOff(){
 		'ToolsOn' : false,
 		'ToolsOFF' : true,
 		'ToolsExist' : ''
-	}, function(items){onLoad();});
+	}, function(items){
+		chrome.tabs.query({currentWindow: true, active: true}, function (tabs){
+			chrome.tabs.sendMessage(tabs[0].id, {"todo" : "actTools"});
+		});
+		onLoad();
+	});
 };
 
 document.addEventListener("DOMContentLoaded", function(){

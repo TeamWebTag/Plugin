@@ -24,9 +24,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 			window.location.reload();
 		}
 	}
-});
-
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 	if (request.todo == "actTools"){
 		var tools = document.createElement("div");
 		tools.style.opacity = '1';
@@ -36,4 +33,5 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		dcanvas.style.pointerEvents = 'none';
 	}
 });
+
 
