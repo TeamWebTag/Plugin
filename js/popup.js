@@ -1,7 +1,7 @@
 function onLoad(){
 	chrome.storage.sync.get({
-	'Activ' : true,
-	'Desac' : false,
+	'Activ' : false,
+	'Desac' : true,
 	'ToolsOn' : false,
 	'ToolsOFF' : true,
 	'ToolsExist' : ''
