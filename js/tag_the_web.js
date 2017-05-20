@@ -16,6 +16,14 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		dcanvas.style.background = 'transparent';
 		dcanvas.style.pointerEvents = 'none';
 		document.body.appendChild(dcanvas);
+		var tools = document.createElement("div");
+		tools.id = 'using_tools';
+		tools.style.width = '20px';
+		tools.style.height = '20px';
+		tools.style.opacity = '1';
+		tools.style.position = 'absolute';
+		tools.style.top = '0px';
+		tools.style.left = '0px';
 	} else if (request.todo == "desactivateExt"){
 		var oldcanvas = document.getElementById('drawing_canvas');
 		if (oldcanvas !== undefined)
@@ -23,18 +31,17 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 			document.body.removeChild(oldcanvas);
 			window.location.reload();
 		}
+		tools.display = '';
 	}
 	if (request.todo == "actTools"){
 		var canTool = document.getElementById('drawing_canvas');
 		canTool.style.pointerEvents = 'auto';
-		var tools = document.createElement("div");
-		tools.style.opacity = '1';
+			tools.display = "";
 		// var pen = tools.createElement("div");
 	}
 	else if (request.todo == "desTools"){
 		var canTool = document.getElementById('drawing_canvas');
 		canTool.style.pointerEvents = 'none';
+		tools.display = '';
 	}
 });
-
-
