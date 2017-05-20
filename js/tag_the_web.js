@@ -18,12 +18,19 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		document.body.appendChild(dcanvas);
 		var tools = document.createElement("div");
 		tools.id = 'using_tools';
-		tools.style.width = '20px';
-		tools.style.height = '20px';
+		tools.style.width = '400px';
+		tools.style.height = '100px';
 		tools.style.opacity = '1';
 		tools.style.position = 'absolute';
-		tools.style.top = '0px';
-		tools.style.left = '0px';
+		tools.style.backgroundColor = 'beige';
+		tools.style.top = '20px';
+		tools.style.left = '30px';
+		document.body.appendChild(tools);
+		var crayon = document.createElement("button");
+		crayon.style.src = 'lol.png';
+		crayon.style.top = '22px';
+		crayon.style.left = '32px';
+		document.body.appendChild(crayon);
 	} else if (request.todo == "desactivateExt"){
 		var oldcanvas = document.getElementById('drawing_canvas');
 		if (oldcanvas !== undefined)
@@ -36,7 +43,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 	if (request.todo == "actTools"){
 		var canTool = document.getElementById('drawing_canvas');
 		canTool.style.pointerEvents = 'auto';
-			tools.display = "";
+		tools.display = "";
 		// var pen = tools.createElement("div");
 	}
 	else if (request.todo == "desTools"){

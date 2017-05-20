@@ -16,6 +16,9 @@
   "icons" : {
     "256" : "img/logo.png"
   },
+  "web_accessible_resources": [
+    "lol.png"
+  ],
    "content_scripts" : [{
     "matches": ["http://*/*", "https://*/*"],
     "exclude_globs" : ["http://facebook.com/*"],
