@@ -14,7 +14,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		dcanvas.style.left = '0px';
 		dcanvas.style.zIndex = '2147483647';
 		dcanvas.style.background = 'transparent';
-		dcanvas.style.pointerEvents = 'auto';
+		dcanvas.style.pointerEvents = 'none';
 		document.body.appendChild(dcanvas);
 	} else if (request.todo == "desactivateExt"){
 		var oldcanvas = document.getElementById('drawing_canvas');
