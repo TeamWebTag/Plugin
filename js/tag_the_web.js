@@ -24,8 +24,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		tools.style.position = 'absolute';
 		tools.style.backgroundColor = 'beige';
 		tools.style.boxShadow = 'rgba(0, 0, 0, 0.3) 0px 6px 10px';
-		tools.style.top = '30px';
-		tools.style.left = '10px';
+		tools.style.top = '0px';
+		tools.style.left = '0px';
 		tools.style.opacity = '0';
 		document.body.appendChild(tools);
 		var crayon = document.createElement("img");
@@ -52,7 +52,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		document.getElementById('using_tools').appendChild(eraser);
 		var libcolor = document.createElement("script");
 		libcolor.src = chrome.runtime.getURL('jscolor/jscolor.js');
-		libcolor.id = 'jscolor';
 		document.body.appendChild(libcolor);
 		var butcolor = document.createElement("button");
 		butcolor.className = "jscolor {valueElement:null,value:'ffffff'}";
@@ -69,10 +68,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		var oldcanvas = document.getElementById('drawing_canvas');
 		if (oldcanvas !== null){
 			var tools = document.getElementById('using_tools');
-			var jscolor = document.getElementById('jscolor');
 			oldcanvas.parentNode.removeChild(oldcanvas);
 			tools.parentNode.removeChild(tools);
-			jscolor.parentNode.removeChild(jscolor);
+			// window.location.reload();
 		}
 	}
 	if (request.todo == "actTools"){
