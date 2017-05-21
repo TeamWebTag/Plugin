@@ -10,7 +10,8 @@
     "https://*/*"
   ],
     "web_accessible_resources": [
-    "img/lol.png"
+    "img/lol.png",
+    "img/eraser.png"
   ],
   "browser_action" : {
     "default_icon" : "img/logo.png",

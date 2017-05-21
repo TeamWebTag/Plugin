@@ -18,8 +18,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		document.body.appendChild(dcanvas);
 		var tools = document.createElement("div");
 		tools.id = 'using_tools';
-		tools.style.width = '100px';
-		tools.style.height = '400px';
+		tools.style.width = '80px';
+		tools.style.height = '300px';
 		tools.style.opacity = '1';
 		tools.style.position = 'absolute';
 		tools.style.backgroundColor = 'beige';
@@ -29,13 +29,21 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		var crayon = document.createElement("img"); 
 		crayon.id = 'pencil';
 		crayon.src = chrome.runtime.getURL('img/lol.png');
-		crayon.style.cursor = 'pointer';
 		crayon.style.width = '50px';
 		crayon.style.height = '50px';
-		crayon.style.display = 'inline-block';
-		crayon.style.top = '10px';
-		crayon.style.left = '10px';
+		crayon.style.top =  '15px';
+		crayon.style.left = '15px';
+		crayon.style.position = 'absolute';
 		document.getElementById('using_tools').appendChild(crayon);
+		var eraser = document.createElement("img"); 
+		eraser.id = 'eraser';
+		eraser.src = chrome.runtime.getURL('img/eraser.png');
+		eraser.style.width = '50px';
+		eraser.style.height = '50px';
+		eraser.style.top =  '80px';
+		eraser.style.left = '15px';
+		eraser.style.position = 'absolute';
+		document.getElementById('using_tools').appendChild(eraser);
 	} else if (request.todo == "desactivateExt"){
 		var oldcanvas = document.getElementById('drawing_canvas');
 		if (oldcanvas !== undefined)
