@@ -17,7 +17,7 @@
     "256" : "img/logo.png"
   },
   "web_accessible_resources": [
-    "lol.png"
+    "./img/lol.png"
   ],
    "content_scripts" : [{
     "matches": ["http://*/*", "https://*/*"],

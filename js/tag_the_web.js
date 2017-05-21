@@ -18,19 +18,23 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		document.body.appendChild(dcanvas);
 		var tools = document.createElement("div");
 		tools.id = 'using_tools';
-		tools.style.width = '400px';
-		tools.style.height = '100px';
+		tools.style.width = '100px';
+		tools.style.height = '400px';
 		tools.style.opacity = '1';
 		tools.style.position = 'absolute';
 		tools.style.backgroundColor = 'beige';
-		tools.style.top = '20px';
-		tools.style.left = '30px';
+		tools.style.top = '0px';
+		tools.style.left = '0px';
 		document.body.appendChild(tools);
-		var crayon = document.createElement("button");
-		crayon.style.src = 'lol.png';
-		crayon.style.top = '22px';
-		crayon.style.left = '32px';
-		document.body.appendChild(crayon);
+		var crayon = document.createElement("div");
+		crayon.id = 'pencil';
+		crayon.style.width = '50px';
+		crayon.style.height = '50px';
+		crayon.style.display = 'inline-block';
+		crayon.style.backgroundImage = chrome.extension.getURL('./img/lol.png');
+		crayon.style.top = '10px';
+		crayon.style.left = '10px';
+		document.getElementById('using_tools').appendChild(crayon);
 	} else if (request.todo == "desactivateExt"){
 		var oldcanvas = document.getElementById('drawing_canvas');
 		if (oldcanvas !== undefined)
