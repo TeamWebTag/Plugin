@@ -11,8 +11,10 @@
   ],
     "web_accessible_resources": [
     "img/lol.png",
-    "img/eraser.png",
-    "jscolor/jscolor.js"
+    "img/trash.png",
+    "jscolor/jscolor.js",
+    "p5/p5.min.js",
+    "p5/empty-example/sketch.js"
   ],
   "browser_action" : {
     "default_icon" : "img/logo.png",
@@ -23,7 +25,6 @@
   },
    "content_scripts" : [{
     "matches": ["http://*/*", "https://*/*"],
-    "exclude_globs" : ["http://facebook.com/*"],
     "js": ["./js/tag_the_web.js"]
   }]
 }
