@@ -4,7 +4,7 @@ function onLoad(){
 	'Desac' : true,
 	'ToolsOn' : false,
 	'ToolsOFF' : true,
-	'ToolsExist' : ''
+	'ToolsExist' : 'none'
 	}, function(items){
 	document.getElementById('activer').disabled = items.Activ;
 	document.getElementById('desactiver').disabled = items.Desac;

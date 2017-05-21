@@ -28,7 +28,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		tools.style.left = '0px';
 		tools.style.opacity = '0';
 		document.body.appendChild(tools);
-		var crayon = document.createElement("img"); 
+		var crayon = document.createElement("img");
 		crayon.id = 'pencil';
 		crayon.src = chrome.runtime.getURL('img/lol.png');
 		crayon.style.width = '50px';
@@ -39,7 +39,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		crayon.style.cursor = 'pointer';
 		crayon.style.position = 'absolute';
 		document.getElementById('using_tools').appendChild(crayon);
-		var eraser = document.createElement("img"); 
+		var eraser = document.createElement("img");
 		eraser.id = 'eraser';
 		eraser.src = chrome.runtime.getURL('img/eraser.png');
 		eraser.style.width = '50px';
@@ -52,6 +52,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		document.getElementById('using_tools').appendChild(eraser);
 		var libcolor = document.createElement("script");
 		libcolor.src = chrome.runtime.getURL('jscolor/jscolor.js');
+		libcolor.id = 'jscolor';
 		document.body.appendChild(libcolor);
 		var butcolor = document.createElement("button");
 		butcolor.className = "jscolor {valueElement:null,value:'ffffff'}";
@@ -66,16 +67,21 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		document.getElementById('using_tools').appendChild(butcolor);
 	} else if (request.todo == "desactivateExt"){
 		var oldcanvas = document.getElementById('drawing_canvas');
-		if (oldcanvas !== null)
-		{
-			document.body.removeChild(oldcanvas);
-			window.location.reload();
+		if (oldcanvas !== null){
+			var tools = document.getElementById('using_tools');
+			var jscolor = document.getElementById('jscolor');
+			oldcanvas.parentNode.removeChild(oldcanvas);
+			tools.parentNode.removeChild(tools);
+			jscolor.parentNode.removeChild(jscolor);
 		}
 	}
 	if (request.todo == "actTools"){
 		var canTool = document.getElementById('drawing_canvas');
 		// canTool.style.pointerEvents = 'auto';
 		document.getElementById('using_tools').style.opacity = '1';
+		document.getElementById('eraser').onclick = function(){
+			alert('hello');
+		};
 	} else if (request.todo == "desTools"){
 		var canTool = document.getElementById('drawing_canvas');
 		canTool.style.pointerEvents = 'none';
