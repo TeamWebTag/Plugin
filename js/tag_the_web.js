@@ -26,12 +26,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse){
 		tools.style.top = '0px';
 		tools.style.left = '0px';
 		document.body.appendChild(tools);
-		var crayon = document.createElement("div");
+		var crayon = document.createElement("img"); 
 		crayon.id = 'pencil';
+		crayon.src = chrome.runtime.getURL('img/lol.png');
+		crayon.style.cursor = 'pointer';
 		crayon.style.width = '50px';
 		crayon.style.height = '50px';
 		crayon.style.display = 'inline-block';
-		crayon.style.backgroundImage = chrome.extension.getURL('./img/lol.png');
 		crayon.style.top = '10px';
 		crayon.style.left = '10px';
 		document.getElementById('using_tools').appendChild(crayon);
