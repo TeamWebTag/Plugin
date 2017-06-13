@@ -1,5 +1,5 @@
-var	w = window.innerWidth;
-var	h = window.innerHeight;
+var	w = document.body.clientWidth; //window.innerWidth;
+var	h = document.body.clientHeight; //window.innerHeight;
 var wild = false;
 var CheminComplet = document.location.href;
 
